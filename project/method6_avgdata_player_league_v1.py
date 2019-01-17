@@ -97,6 +97,7 @@ data2018 = data2018.drop(diffset.difference(set(data2016)), axis=1)
 data_train_2018 = data2018[~data2018['league'].isin(['WC'])]
 data_train =  pd.concat([data_train, data_train_2018] ,sort=False)
 data_test= data2018[data2018['league'].isin(['WC'])]
+#data_test = pd.read_csv('2018-worlds-exrtra-data.csv')
 
 data['gameid'] = pd.Series(data['gameid'].astype(str))
 data_train['gameid'] = pd.Series(data_train['gameid'].astype(str))
