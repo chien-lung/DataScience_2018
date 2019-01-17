@@ -133,25 +133,23 @@ wc_b_result = np.array(wc_data.loc[wc_data['playerid'].isin([100])]['result'])
 y_test = wc_b_result
 
 
-times = 30
 score = [0,0,0,0]
-for i in range(times):
-    X_train, X_val, y_train, y_val = train_test_split(plr_X, plr_y, test_size=test_size)
-    
-    print("Logistic Regression:")
-    logreg = LogisticRegression()
-    score[0] += getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print("DecisionTreeClassifier:")
-    tree = DecisionTreeClassifier()
-    score[1] += getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('Adaboost:')
-    adaboost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(),
-                                      n_estimators=40,
-                                      learning_rate=3)
-    score[2] += getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('RandomForestClassifier:')
-    forest = RandomForestClassifier()
-    score[3] += getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+X_train, X_val, y_train, y_val = train_test_split(plr_X, plr_y, test_size=test_size)
+
+print("Logistic Regression:")
+logreg = LogisticRegression()
+score[0] += getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print("DecisionTreeClassifier:")
+tree = DecisionTreeClassifier()
+score[1] += getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print('Adaboost:')
+adaboost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(),
+                                  n_estimators=40,
+                                  learning_rate=3)
+score[2] += getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print('RandomForestClassifier:')
+forest = RandomForestClassifier()
+score[3] += getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times

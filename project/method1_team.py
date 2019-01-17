@@ -78,25 +78,27 @@ wc_r_one_hot = oe.transform(le.transform(wc_r).reshape(-1,1)).toarray()
 X_test = np.concatenate((wc_b_one_hot,wc_r_one_hot), axis=1) #[blue team,red team]
 y_test = wc_b_result
 
-times = 50
+
+##############
+#Counting#
+##############
+X_train, X_val, y_train, y_val = train_test_split(team_X, team_y, test_size=test_size)
+
 score = [0,0,0,0]
-for i in range(times):
-    X_train, X_val, y_train, y_val = train_test_split(team_X, team_y, test_size=test_size)
-    
-    print("Logistic Regression:")
-    logreg = LogisticRegression()
-    score[0] += getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print("DecisionTreeClassifier:")
-    tree = DecisionTreeClassifier()
-    score[1] += getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('Adaboost:')
-    adaboost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(),
-                                      n_estimators=40,
-                                      learning_rate=3)
-    score[2] += getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('RandomForestClassifier:')
-    forest = RandomForestClassifier()
-    score[3] += getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+print("Logistic Regression:")
+logreg = LogisticRegression()
+score[0] += getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print("DecisionTreeClassifier:")
+tree = DecisionTreeClassifier()
+score[1] += getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print('Adaboost:')
+adaboost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(),
+                                  n_estimators=40,
+                                  learning_rate=3)
+score[2] += getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+
+print('RandomForestClassifier:')
+forest = RandomForestClassifier()
+score[3] += getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
