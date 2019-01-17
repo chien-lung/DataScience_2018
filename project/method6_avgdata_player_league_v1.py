@@ -66,7 +66,7 @@ def getScore(model, test_size, X_train, y_train, X_val, y_val, X_test, y_test):
     print()
     return score
 
-test_size = 0.25
+test_size = 0.
 random_state = 6
 important_leagues = ['EULCS','NALCS','LCK','LPL','LMS']
 important_records = ['teamtowerkills','earnedgpm','goldspent','gspd', #>0.7

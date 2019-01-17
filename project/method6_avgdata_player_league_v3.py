@@ -5,7 +5,7 @@ Using 16, 17, 18 season data to train, and test with 18 wc data
 method:
     league_rank, player
 score: 
-    0.67, 0.62, 0.58, 0.61
+    0.64, 0.63, 0.58, 0.61
 @author: Lung
 """
 import numpy as np
@@ -66,7 +66,7 @@ def getScore(model, test_size, X_train, y_train, X_val, y_val, X_test, y_test):
     print()
     return score
 
-test_size = 0.25
+test_size = 0.
 random_state = 6
 important_leagues = ['EULCS','NALCS','LCK','LPL','LMS']
 important_records = ['teamtowerkills','earnedgpm','goldspent','gspd', #>0.7
@@ -182,24 +182,21 @@ y_test = wc_b_result
 ########################
 #Train & Test & Scoring#
 ########################
-times = 50
-score = [0,0,0,0]
-for i in range(times):
-    X_train, X_val, y_train, y_val = train_test_split(plr_X, plr_y, test_size=test_size)
-    
-    print("Logistic Regression:")
-    logreg = LogisticRegression()
-    score[0] += getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print("DecisionTreeClassifier:")
-    tree = DecisionTreeClassifier()
-    score[1] += getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('Adaboost:')
-    adaboost = AdaBoostClassifier()
-    score[2] += getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
-    
-    print('RandomForestClassifier:')
-    forest = RandomForestClassifier()
-    score[3] += getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)/times
+X_train, X_val, y_train, y_val = train_test_split(plr_X, plr_y, test_size=test_size)
+
+print("Logistic Regression:")
+logreg = LogisticRegression()
+getScore(logreg, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
+
+print("DecisionTreeClassifier:")
+tree = DecisionTreeClassifier()
+getScore(tree, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
+
+print('Adaboost:')
+adaboost = AdaBoostClassifier()
+getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
+
+print('RandomForestClassifier:')
+forest = RandomForestClassifier()
+getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
 
