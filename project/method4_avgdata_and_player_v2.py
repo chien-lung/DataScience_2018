@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Jan 11 14:13:08 2019
-
+train input:
+    players and average of game records 
 @author: Lung
 """
 import numpy as np

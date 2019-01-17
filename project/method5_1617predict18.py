@@ -176,7 +176,7 @@ print('RandomForestClassifier:')
 forest = RandomForestClassifier()
 getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
 
-'''
+
 ##############################################
 print("--------------------------------------------------------")
 ##############################################
@@ -229,4 +229,3 @@ getScore(adaboost, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
 print('RandomForestClassifier:')
 forest = RandomForestClassifier()
 getScore(forest, test_size, X_train, y_train, X_val, y_val, X_test, y_test)
-'''

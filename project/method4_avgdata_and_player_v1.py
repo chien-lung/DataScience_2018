@@ -2,6 +2,7 @@
 """
 Created on Thu Jan 10 20:54:38 2019
 train input:
+    players and game records 
 @author: Lung
 """
 import numpy as np

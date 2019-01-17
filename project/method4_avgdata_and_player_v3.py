@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Jan 11 20:26:25 2019
+train input:
+    players and average of game records 
 difference:
     StandardScaler for competition data
     
